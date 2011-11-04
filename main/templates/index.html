@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>DCA Tools</h3>
+
+<div id="paragraph"> 
+<span>Welcome to the Network Engineering DCA Tools server! We have provided this site to assist OSU DCAs in diagnosing technical problems.</span><br/><br/>
+
+<span><b>Please Note:</b> Information available on this site may be sensitive in nature and should not be shared with individuals outside the university except by direction of the University Legal office. Also, sharing some information on this site may pose a security risk to the University. In particular, details about network layout and architecture should not be reproduced from this site. In other words, please don't download or print information from this site and leave it somewhere where persons who don't have a business need-to-know might find it.</span><br/><br/>
+</div>
+
+<span style="color:#CC5500"><b>Current Tools</b></span>
+
+<div id="navlist">
+    <a href="/dhcp"><span>DHCP Log Search</span><br/>
+    <a href="/vpn"><span>VPN Log Search</span><br/>
+    <a href="/cca"><span>Clean Access Log Search</span><br/>
+    <a href="/greylist"><span>Greylisting Log/Database Search</span><br/>
+    <a href="/header_reject"><span>Header-Reject Log Search</span><br/>
+    <a href="/named"><span>Bind Zone Transfer (Named) Log Search</span><br/>
+    <a href="/virtualusers"><span>Static @orst.edu Aliases</span><br/>
+    <a href="/transport"><span>SMTP Transport File</span><br/>
+    <a href="/firewall"><span>Information for Firewall Administrators / Firewall Logs</span><br/>
+    <a href="/security"><span>Security Report (Statistics)</span><br/>
+</div>
+
+{% endblock %}

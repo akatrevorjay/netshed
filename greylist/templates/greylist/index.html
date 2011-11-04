@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Greylist Log Search</h3>
+
+<form method="GET">
+   <table>
+       <tr>
+           <td id="table_headers">Sending IP:</td>
+           <td>
+               <input type="text" name="ip"/>
+           </td>
+       </tr>
+       <tr> <td id="table_headers">From Address:</td> <td>
+               <input type="text" name="sender"/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">To Address:</td>
+           <td>
+               <input type="text" name="recipient"/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">Time (24-hour clock):</td>
+           <td>
+                Date&nbsp;&nbsp;<select name="date">
+                    {% for date in dates %}             
+                        <option value={{date}}>{{date}}</option>
+                    {% endfor %}
+                    <option value="all">All</option>
+                </select><br/>
+                From&nbsp;
+                <input type="text" maxlength=2 size=1 name="start_hr"/> :
+                <input type="text" maxlength=2 size=1 name="start_min"/>
+                &nbsp;to&nbsp;
+                <input type="text" maxlength=2 size=1 name="end_hr"/> :
+                <input type="text" maxlength=2 size=1 name="end_min"/>
+           </td>
+       </tr>
+   </table>
+    <input type="submit" name="search" value="Search"/>
+    <input type="submit" name="search" value="Database Query"/>
+    &nbsp;&nbsp;Limit Results:
+    <select name="limit">
+        <option value="all">All</option>
+        <option value="0">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+    </select>
+</form>
+
+<br/>
+{% if message %}
+    {{ message }}
+{% endif %}
+
+{% if db_results %}
+<div id="log">
+    <table> 
+        <tr id="table_headers">
+            <th>IP</th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>First Time</th>
+            <th>Last Time</th>
+            <th>Hits</th>
+        </tr>
+        {% for greylist in db_results %}
+            <tr>
+                <td>{{ greylist.ip }}</td>
+                <td>{{ greylist.sender }}</td>
+                <td>{{ greylist.recipient }}</td>
+                <td>{{ greylist.first }}</td>
+                <td>{{ greylist.last}}</td>
+                <td>{{ greylist.n }}</td>
+            </tr>
+        {% endfor %}
+    </table>  
+</div>  
+{% endif %}
+    
+{% endblock %}

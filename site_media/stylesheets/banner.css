@@ -1,0 +1,31 @@
+/*===========================================================================
+    Oregon State University Style Definitions
+
+    Written by:
+        Central Web Services <cws at lists dot oregonstate dot edu>
+
+    Copyright:
+        Oregon State University (http://oregonstate.edu/about/copyright.html)
+
+    Standard:
+        http://www.w3.org/TR/REC-CSS2/
+============================================================================= */
+/*  @import is used here for backwards compatibility with css1-only browsers  */
+@import url(./css2.css);
+
+#banner{ 
+    background: #000000; 
+    padding-right: 40px; 
+}
+div#tb_banner{ 
+    height:42px; 
+}
+
+div#tb_bannerUtility{ 
+    float:left; 
+} 
+div#tb_utility{ 
+    padding-top:20px; 
+    background-color:#000000; 
+    text-align:right;
+}

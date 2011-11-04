@@ -1,0 +1,198 @@
+# Transport file
+#
+# Tells Postfix where to direct mail for domains that we relay for.
+#
+# The [] notation around a hostname tells Postfix to *not* do an MX
+# lookup, preventing a mail loop.
+#
+# NOTE: File managed by cfengine, make changes in cfengine
+
+# Mailman
+lists.orst.edu              smtp:[lists.oregonstate.edu]
+lists.oregonstate.edu       smtp:[lists.oregonstate.edu]
+
+# NET domains
+net.orst.edu                smtp:milo.nws.oregonstate.edu
+net.oregonstate.edu         smtp:milo.nws.oregonstate.edu
+onms.nws.oregonstate.edu    smtp:milo.nws.oregonstate.edu
+moru.nws.oregonstate.edu    smtp:milo.nws.oregonstate.edu
+page.oregonstate.edu        smtp:milo.nws.oregonstate.edu
+page.orst.edu               smtp:milo.nws.oregonstate.edu
+rpage.oregonstate.edu       smtp:milo.nws.oregonstate.edu
+rpage.orst.edu              smtp:milo.nws.oregonstate.edu
+page.nws.oregonstate.edu    smtp:milo.nws.oregonstate.edu
+page.telcom.oregonstate.edu smtp:milo.nws.oregonstate.edu
+exrestore.oregonstate.edu   smtp:restore.exrestore.oregonstate.edu
+lists.ous.edu               smtp:[lists.ous.edu]
+
+# ONID - if this host changes, update firewall rules to allow port 2003
+# Contact: Andy Morgan, morgan@orst.edu
+onid.oregonstate.edu        lmtp:cyrus-vs.onid.oregonstate.edu
+onid.orst.edu               lmtp:cyrus-vs.onid.oregonstate.edu
+test.onid.oregonstate.edu   lmtp:test-cyrus-fe.onid.oregonstate.edu
+
+# Helpdesk
+# Contact: Chris Sinnett, chris.sinnett@oregonstate.edu
+helpdesk.tss.oregonstate.edu    smtp:[helpdesk.tss.oregonstate.edu]
+helpdesk.oregonstate.edu        smtp:[smtp.osuosl.org]
+
+# COF
+# Contact: Ken West, ken.west@oregonstate.edu
+# Contact: Terralyn Vandetta, terrayln.vandetta@oregonstate.edu
+fsl.orst.edu                    smtp:128.193.112.105
+cof.orst.edu                    smtp:128.193.112.6
+cornus.fsl.orst.edu             smtp:128.193.112.105
+
+# COS
+# Contact: Clif Johnson, cjohnson@science.oregonstate.edu
+stat.orst.edu                       smtp:[barracuda.science.oregonstate.edu]
+stat.oregonstate.edu                smtp:[barracuda.science.oregonstate.edu]
+dusk.geo.orst.edu                   smtp:[barracuda.science.oregonstate.edu]
+mail.science.oregonstate.edu        smtp:[barracuda.science.oregonstate.edu]
+mail.science.orst.edu               smtp:[barracuda.science.oregonstate.edu]
+web.science.oregonstate.edu         smtp:[frontend.science.oregonstate.edu]
+physics.orst.edu                    smtp:[barracuda.science.oregonstate.edu]
+dots.physics.orst.edu               smtp:[barracuda.science.oregonstate.edu]
+cosine.science.oregonstate.edu      smtp:[barracuda.science.oregonstate.edu]
+science.oregonstate.edu             smtp:[barracuda.science.oregonstate.edu]
+science.orst.edu                    smtp:[barracuda.science.oregonstate.edu]
+physics.oregonstate.edu             smtp:[barracuda.science.oregonstate.edu]
+geo.orst.edu                        smtp:[barracuda.science.oregonstate.edu]
+geo.oregonstate.edu                 smtp:[barracuda.science.oregonstate.edu]
+math.oregonstate.edu                smtp:[barracuda.science.oregonstate.edu]
+math.orst.edu                       smtp:[barracuda.science.oregonstate.edu]
+bcc.orst.edu                        smtp:[barracuda.science.oregonstate.edu]
+odysseus.science.oregonstate.edu    smtp:[barracuda.science.oregonstate.edu]
+odysseus.als.orst.edu               smtp:[barracuda.science.oregonstate.edu]
+
+# CGRB
+# Contact: Chris Sullivan, chris@cgrb.oregonstate.edu
+# Contact: Steve Drake, steve@cgrb.oregonstate.edu
+# Contact: Matthew Peterson petersm3@cgrb.oregonstate.edu
+cgrb.oregonstate.edu		smtp:[cgrb.oregonstate.edu]
+seps.org			        smtp:[cgrb.oregonstate.edu]
+steps.oregonstate.edu       smtp:[cgrb.oregonstate.edu]
+
+# COE
+# Contact: Tom Lieuallen, toml@engr.oregonstate.edu
+# Contact: Todd Shechter, shechter@engr.oregonstate.edu
+engr.orst.edu                   smtp:[zen.engr.oregonstate.edu]
+page.engr.orst.edu              smtp:[order.engr.oregonstate.edu]
+page.engr.oregonstate.edu       smtp:[order.engr.oregonstate.edu]
+.engr.orst.edu                  smtp:[zen.engr.oregonstate.edu]
+engr.oregonstate.edu            smtp:[zen.engr.oregonstate.edu]
+.engr.oregonstate.edu           smtp:[zen.engr.oregonstate.edu]
+pandora2.bre.orst.edu           smtp:[zen.engr.oregonstate.edu]
+bre.orst.edu                    smtp:[zen.engr.oregonstate.edu]
+bioe.orst.edu                   smtp:[zen.engr.oregonstate.edu]
+bioe.oregonstate.edu            smtp:[zen.engr.oregonstate.edu]
+pandora.bioe.orst.edu           smtp:[zen.engr.oregonstate.edu]
+biomecs.orst.edu                smtp:[zen.engr.oregonstate.edu]
+biomecs.oregonstate.edu         smtp:[zen.engr.oregonstate.edu]
+cbee.oregontate.edu             smtp:[zen.engr.oregonstate.edu]
+cce.oregonstate.edu             smtp:[zen.engr.oregonstate.edu]
+ccee.orst.edu                   smtp:[zen.engr.oregonstate.edu]
+ccee.oregonstate.edu            smtp:[zen.engr.oregonstate.edu]
+ce.orst.edu                     smtp:[zen.engr.oregonstate.edu]
+.ce.orst.edu                    smtp:[zen.engr.oregonstate.edu]
+ce.oregonstate.edu              smtp:[zen.engr.oregonstate.edu]
+che.orst.edu                    smtp:[zen.engr.oregonstate.edu]
+che.oregonstate.edu             smtp:[zen.engr.oregonstate.edu]
+cs.orst.edu                     smtp:[mail.eecs.oregonstate.edu]
+.cs.orst.edu                    smtp:[mail.eecs.oregonstate.edu]
+cs.oregonstate.edu              smtp:[mail.eecs.oregonstate.edu]
+.cs.oregonstate.edu             smtp:[mail.eecs.oregonstate.edu]
+mail.cs.orst.edu                smtp:[mail.eecs.oregonstate.edu]
+ghost.cs.orst.edu               smtp:[mail.eecs.oregonstate.edu]
+ece.orst.edu                    smtp:[mail.eecs.oregonstate.edu]
+.ece.orst.edu                   smtp:[mail.eecs.oregonstate.edu]
+ece.oregonstate.edu             smtp:[mail.eecs.oregonstate.edu]
+.ece.oregonstate.edu            smtp:[mail.eecs.oregonstate.edu]
+eecs.orst.edu                   smtp:[mail.eecs.oregonstate.edu]
+.eecs.orst.edu                  smtp:[mail.eecs.oregonstate.edu]
+eecs.oregonstate.edu            smtp:[mail.eecs.oregonstate.edu]
+.eecs.oregonstate.edu           smtp:[mail.eecs.oregonstate.edu]
+ie.orst.edu                     smtp:[zen.engr.oregonstate.edu]
+ie.oregonstate.edu              smtp:[zen.engr.oregonstate.edu]
+me.orst.edu                     smtp:[zen.engr.oregonstate.edu]
+.me.orst.edu                    smtp:[zen.engr.oregonstate.edu]
+me.oregonstate.edu              smtp:[zen.engr.oregonstate.edu]
+scarab.nacse.org                smtp:[pancake.nacse.org]
+mime.oregonstate.edu            smtp:[zen.engr.oregonstate.edu]
+.mime.oregonstate.edu           smtp:[zen.engr.oregonstate.edu]
+nacse.org                       smtp:[pancake.nacse.org]
+.nacse.org                      smtp:[pancake.nacse.org]
+nacse.oregonstate.edu           smtp:[pancake.nacse.org]
+nees.orst.edu                   smtp:[pancake.nacse.org]
+nees.oregonstate.edu            smtp:[pancake.nacse.org]
+oregonflora.org                 smtp:[pancake.nacse.org]
+piscoweb.org                    smtp:[pancake.nacse.org]
+prism.oregonstate.edu           smtp:[pancake.nacse.org]
+ptools.org                      smtp:[pancake.nacse.org]
+wildlifelaw.org                 smtp:[pancake.nacse.org]
+tsunami.orst.edu                smtp:[pancake.nacse.org]
+tsunami.oregonstate.edu         smtp:[pancake.nacse.org]
+trtr.org                        smtp:[zen.engr.oregonstate.edu]
+ne.orst.edu                     smtp:[zen.engr.oregonstate.edu]
+.ne.orst.edu                    smtp:[zen.engr.oregonstate.edu]
+ne.oregonstate.edu              smtp:[zen.engr.oregonstate.edu]
+rc.orst.edu                     smtp:[zen.engr.oregonstate.edu]
+rc.oregonstate.edu              smtp:[zen.engr.oregonstate.edu]
+sbi.oregonstate.edu             smtp:[zen.engr.oregonstate.edu]
+scarab.science.oregonstate.edu  smtp:[pancake.nacse.org]
+
+# Library
+# Contact: Ryan Ordway, ryan.ordway@oregonstate.edu
+oasis.oregonstate.edu       smtp:[oasis.oregonstate.edu]
+library.oregonstate.edu     smtp:[smtp.library.oregonstate.edu]
+paulingcatalog.org          smtp:[smtp.library.oregonstate.edu]
+paulingcatalogue.org        smtp:[smtp.library.oregonstate.edu]
+
+# CWS
+# Contact: Josh Zojonc, josh.zojonc@oregonstate.edu
+cws.oregonstate.edu		smtp:[access.cws.oregonstate.edu]
+
+# SCF
+# Contact: Gretchen Kuwahara, breunsgr@orst.edu
+scf.oregonstate.edu		smtp:[cho.scf.oregonstate.edu]
+scf.orst.edu			smtp:[cho.scf.oregonstate.edu]
+
+# UHDS
+# Contact: chris.white@oregonstate.edu, karl.vollmer@oregonstate.edu
+rms.uhds.oregonstate.edu        smtp:[3oh1.uhds.oregonstate.edu]
+calabaloos.com                  smtp:[3oh1.uhds.oregonstate.edu]
+
+# Exchange domains
+# Contact: NET, itconsult@oregonstate.edu
+exchangemail.orst.edu           smtp:nws-ets.nws.oregonstate.edu
+smile.oregonstate.edu           smtp:nws-ets.nws.oregonstate.edu
+mu.orst.edu                     smtp:nws-ets.nws.oregonstate.edu
+studentmedia.orst.edu           smtp:nws-ets.nws.oregonstate.edu
+recsport.orst.edu               smtp:nws-ets.nws.oregonstate.edu
+ehsc.orst.edu                   smtp:nws-ets.nws.oregonstate.edu
+hmsc.orst.edu                   smtp:nws-ets.nws.oregonstate.edu
+osucascades.edu                 smtp:nws-ets.nws.oregonstate.edu
+css.orst.edu                    smtp:nws-ets.nws.oregonstate.edu
+chem.orst.edu                   smtp:nws-ets.nws.oregonstate.edu
+voicemail.oregonstate.edu       smtp:nws-ets.nws.oregonstate.edu
+
+# COF
+# Contact: Ken West, ken.west@oregonstate.edu
+# Contact: Terralyn Vandetta, terrayln.vandetta@oregonstate.edu
+forestry.oregonstate.edu        smtp:nws-ets.nws.oregonstate.edu
+for.orst.edu                    smtp:nws-ets.nws.oregonstate.edu
+
+# COB
+# Contact: Alan Sprague, alan.sprague@bus.oregonstate.edu
+bus.orst.edu                    smtp:nws-ets.nws.oregonstate.edu
+bus.oregonstate.edu             smtp:nws-ets.nws.oregonstate.edu
+
+# FW
+# Contact Scott Austed, scott.austed@oregonstate.edu
+fw.orst.edu                     smtp:nws-ets.nws.oregonstate.edu
+devoid.fwl.oregonstate.edu      smtp:[devoid.fwl.oregonstate.edu]
+
+# OSCS (Seed Certification)
+# Contact: Farhad Shafa, farhad@oregonstate.edu
+oscs.orst.edu                   smtp:[oscs.orst.edu]
+oscs.oregonstate.edu            smtp:[oscs.orst.edu]

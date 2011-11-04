@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Security Report</h3>
+<br/>
+
+
+<div id="log" style="width:1070px;" class="container">          
+   
+    <div class="span-20 last">
+        <h4><b>DMCA Notifications by Zone</b></h4>
+        <div class="span-10">
+            <h4>All Time</h4>
+            <table>
+                <tr id="table_headers">
+                    <th>Zone</th>
+                    <th>Count</th>
+                </tr>
+                    
+                {% for zone_count in notifications_all %}
+                <tr>
+                    <td>{{zone_count.zone}}</td>
+                    <td>{{zone_count.count}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="span-10 last">
+            <h4>Current Year</h4>
+            <table>
+                <tr id="table_headers">
+                    <th>Zone</th>
+                    <th>Count</th>
+                </tr>
+                    
+                {% for zone_count in notifications_year %}
+                <tr>
+                    <td>{{zone_count.zone}}</td>
+                    <td>{{zone_count.count}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="span-20 last">
+        <h4><b>Repeat Offenders by Zone</b></h4>
+        <div class="span-10">
+            <h4>All Time</h4>
+            <table>
+                <tr id="table_headers">
+                    <th>Zone</th>
+                    <th>Count</th>
+                </tr>
+                    
+                {% for zone_count in repeat_all %}
+                <tr>
+                    <td>{{zone_count.zone}}</td>
+                    <td>{{zone_count.count}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="span-10 last">
+            <h4>Current Year</h4>
+            <table>
+                <tr id="table_headers">
+                    <th>Zone</th>
+                    <th>Count</th>
+                </tr>
+                    
+                {% for zone_count in repeat_year %}
+                <tr>
+                    <td>{{zone_count.zone}}</td>
+                    <td>{{zone_count.count}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    
+    <div class="span-20 last">
+        <h4><b>FireEye Infected Hosts by Zone</b></h4>
+        <h4>All Time</h4>
+        <table>
+            <tr id="table_headers">
+                <th>Zone</th>
+                <th>Count</th>
+            <tr/>   
+            
+            {% for zone_count in fireeye_all %}
+            <tr>
+                <td>{{zone_count.zone}}</td>
+                <td>{{zone_count.count}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+<br/>
+    
+{% endblock %}

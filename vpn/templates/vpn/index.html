@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>VPN Log Search</h3>
+
+<form method="GET">
+   <table>
+       <tr>
+           <td id="table_headers">Output:</td>
+           <td>
+               <input type="checkbox" name="log_type" value="error"/> Filtered (logs with failures, invalid specifications, group changes)<br/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">IP Address:</td>
+           <td>
+               <input type="text" name="ip"/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">Username:</td>
+           <td>
+               <input type="text" name="username"/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">Group</td>
+           <td>
+               <input type="text" name="group"/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">Time (24-hour clock):</td>
+           <td>
+                Date&nbsp;&nbsp;<select name="date">
+                    {% for date in dates %}             
+                        <option value={{date}}>{{date}}</option>
+                    {% endfor %}
+                    <option value="all">All</option>
+                </select><br/>
+                From&nbsp;
+                <input type="text" maxlength=2 size=1 name="start_hr"/> :
+                <input type="text" maxlength=2 size=1 name="start_min"/>
+                &nbsp;to&nbsp;
+                <input type="text" maxlength=2 size=1 name="end_hr"/> :
+                <input type="text" maxlength=2 size=1 name="end_min"/>
+           </td>
+       </tr>
+   </table>
+    <input type="submit" value="Search"/>
+    &nbsp;&nbsp;Limit Results:
+    <select name="limit">
+        <option value="0">All</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+    </select>
+</form>
+<br/>
+    
+{% endblock %}

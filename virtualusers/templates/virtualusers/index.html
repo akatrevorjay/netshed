@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="log">
+
+    <h3>Virtual Users</h3>
+    
+    {% for line in virtualusers %}
+        {{ line }}<br/>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

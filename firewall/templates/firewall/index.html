@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Information for Firewall Administrators</h3>
+
+<table>
+    <tr>
+        <td id="table_headers">VPN Client Range</td>
+        <td>10.197.32.0/19</td>
+    </tr>
+    <tr>
+        <td id="table_headers">Translation (NAT/PAT) Public Rnage</td>
+        <td>128.193.8.0/24</td>
+    </tr>
+    <tr>
+        <td id="table_headers">Wireless Ranges</td>
+        <td><a href="http://oregonstate.edu/net/network/wireless-networks.php">Wireless Networks</a></td>
+    </tr>
+    <tr>
+        <td id="table_headers">ResNet Ranges</td>
+        <td>ResNet Registered: 128.193.237.0/24...128.193.255.0/24<br/>
+            Resnet Wireless: 10.196.240.0/22..10.196.252.0/22</td>
+    </tr>
+</table>
+<br/>
+
+<h3>Firewall Log Search</h3>
+
+<form method="GET">
+   <table>
+       <tr>
+           <td id="table_headers">Search Parameter:</td>
+           <td>
+               <input type="text" name="filter"/>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">Log type:</td>
+           <td>
+                <select name="log_type">
+                    <option value="ISsvcs-FW">ISsvcs-FW</option>
+                    <option value="PBSFsvcs-FW">PBSFsvcs-FW</option>
+                </select>
+           </td>
+       </tr>
+       <tr>
+           <td id="table_headers">Date:</td>
+           <td>
+                <select name="date">
+                    <option value="all">All</option>
+                    {% for date in dates %}             
+                        <option value={{date}}>{{date}}</option>
+                    {% endfor %}
+                </select>
+           </td>
+       </tr>
+   </table>
+    <input type="submit" value="Search"/>
+</form>
+
+<br/>
+
+{% endblock %}
