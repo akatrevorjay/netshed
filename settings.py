@@ -1,37 +1,41 @@
 # Django settings for netshed project.
 import os
-from lib.utilities import connect_mongo_session
+from lib.utilities import connect_mongo_session, get_config
 
-connect_mongo_session(local=True)
+connect_mongo_session()
+
+GREYLIST_HOST = get_config('greylist', 'host')
+GREYLIST_USER = get_config('greylist', 'user')
+GREYLIST_PASS = get_config('greylist', 'password')
+GREYLIST_DB   = get_config('greylist', 'db')
 
 DATABASES = {
+    'default': {
+        'USER': 'dummy',
+        'NAME': 'dummy',
+        'HOST': 'localhost',
+        'ENGINE': 'dummy',
+        'USER': 'dummy',
+        'PASSWORD': '',
+    },
 
     'dmca': {
-        'NAME': '*',
-        'HOST': '*',
+        'NAME': get_config('dmca', 'name'),
+        'HOST': get_config('dmca', 'host'),
         'ENGINE': 'django.db.backends.mysql',
-        'USER': '*',
-        'PASSWORD': '*',
-        'PORT': *,
+        'USER': get_config('dmca', 'user'),
+        'PASSWORD': get_config('dmca', 'password'),
+        'PORT': get_config('dmca', 'port'),
     },
 
     'net': {
-        'NAME': '*',
-        'HOST': '*',
+        'NAME': get_config('net', 'name'),
+        'HOST': get_config('net', 'host'),
         'ENGINE': 'django.db.backends.mysql',
-        'USER': '*',
-        'PASSWORD': '*',
-        'PORT': *,
+        'USER': get_config('net', 'user'),
+        'PASSWORD': get_config('net', 'password'),
+        'PORT': get_config('net', 'port'),
     },
-
-    'default': {
-        'NAME': '*',
-        'HOST': '*',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': '*',
-        'PASSWORD': '*',
-        'PORT': *,
-    }
 }
 
 SESSION_ENGINE = "mongoengine.django.sessions"
@@ -79,7 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-#    'netshed.middleware.authentication.SingleSignOnMiddleware',
+#   'netshed.middleware.authentication.SingleSignOnMiddleware',
     'netshed.middleware.development.DevelopmentMiddleware',
 )
 
@@ -103,13 +107,7 @@ INSTALLED_APPS = (
     'security',
 )
 
-LOCAL = True
-DHCP_DIR = 'dhcp'
-VPN_DIR = 'vpn'
-CCA_DIR = 'cca'
-GREYLIST_DIR = 'greylist'
-HEADER_REJECT_DIR = 'header_reject'
-NAMED_DIR = 'named'
+LOCAL = False
 VIRTUALUSERS_FILE = '/data/www/netshed/site_media/virtualusers.orst.static'
 TRANSPORT_FILE = '/data/www/netshed/site_media/smtp_transport.static'
 IS_DIR = '/var/log/fw/ISsvcs-FW/'

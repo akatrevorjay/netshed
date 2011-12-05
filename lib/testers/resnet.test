@@ -1,0 +1,5 @@
+Nov  4 00:00:03 blank1 smpusher: username=fred ip=128.193.250.162 mac=aa:bb:cc:dd:ee:ff
+Nov  4 00:00:03 blank1 smpusher: username=alice ip=128.193.247.142 mac=aa:bb:cc:dd:ee:ff
+Nov  4 00:00:03 blank2 smpusher: username=bob ip=10.196.253.111 mac=aa:bb:cc:dd:ee:ff
+Nov  4 00:00:03 blank2 smpusher: username=fredbob ip=10.196.228.18 mac=aa:bb:cc:dd:ee:ff
+Nov  4 00:00:03 blank1 smpusher: username=trentmalory ip=10.196.253.111 mac=aa:bb:cc:dd:ee:ff

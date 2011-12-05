@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Aruba Log Search</h3>
+
+<form method="GET">
+    <table>
+        <tr>
+            <td id="table_headers">Aruba:</td>
+            <td>
+                <input type="text" name="aruba"/>
+            </td>
+        </tr>
+        <tr>
+            <td id="table_headers">Location:</td>
+            <td>
+                <input type="text" name="location"/>
+            </td>
+        </tr>
+        <tr>
+            <td id="table_headers">Mac Address:</td>
+            <td>
+                <input type="text" name="mac"/>
+            </td>
+        </tr>
+        <tr>
+            <td id="table_headers">IP Address:</td>
+            <td>
+                <input type="text" name="ip"/>
+            </td>
+        </tr>
+        <tr>
+             <td>Time(24-hour clock):</td>
+             <td>
+                From
+                <input type="text" maxlength=2 size=1 name="start_hr"/> :
+                <input type="text" maxlength=2 size=1 name="end_hr"/> 
+                 to
+                <input type="text" maxlength=2 size=1 name="start_min"/> :
+                <input type="text" maxlength=2 size=1 name="start_hr"/> 
+                <br/>Date:
+                <select name="date">
+                    {% for date in dates %}
+                        <option value={{date}}>{{date}}</option>
+                    {% endfor %}
+                    <option value="All">All</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Search"/>
+
+     Limit Results:
+     <select name="limit">
+        <option value="0">All</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+     </select><br/>
+
+</form>
+{% endblock %}

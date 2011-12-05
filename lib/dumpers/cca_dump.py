@@ -4,6 +4,8 @@
 #
 # @author: Kevin Ngo <kevin.ngo@oregonstate.edu>
 
+import sys
+sys.path.append('../')
 from utilities import *
 from pymongo import Connection, database, collection
 import datetime
@@ -39,7 +41,7 @@ def dump(test=False):
 
             cca['time'] = to_unix_timestamp(format_logdate(split[0] + ' ' + split[1]), split[2])
 
-             # get date to know which collection to store to
+            # get date to know which collection to store to
             date = 'cca_' + str(datetime.datetime.now().year) + format_logdate(split[0] + ' ' + split[1])
 
             # parse standard cca authentication line
@@ -53,11 +55,11 @@ def dump(test=False):
             else:
                 match = ip_regex.search(line)
                 if match:
-                    cca['ip'] = ip2long(match.group())
+                    cca['ip'] = ip2long(match.group(1))
 
                 match = mac_regex.search(line)
                 if match:
-                    cca['mac'] = match.group().lower().replace(':','')
+                    cca['mac'] = match.group(1).lower(1).replace(':','')
 
                 match = user_kick_regex.search(line)
                 if match:

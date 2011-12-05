@@ -1,0 +1,5 @@
+Oct 9 00:00:00 ns2 dhcpd: DHCPINFORM from 128.193.92.174 via 128.193.92.1
+Oct 9 00:00:00 ns1 dhcpd: DHCPINFORM from 128.193.92.174 via 128.193.92.1
+Oct 9 00:00:00 ns2 dhcpd: DHCPACK to 128.193.92.174 (3c:d9:2b:54:ca:ce) via eth0
+Oct 9 00:00:00 ns1 dhcpd: DHCPACK to 128.193.92.174 (3c:d9:2b:54:ca:ce) via eth0
+Oct 9 00:00:00 ns2 dhcpd: DHCPDISCOVER from 00:16:b9:5e:3d:86 via 128.193.186.1: peer holds all free leases

@@ -1,0 +1,5 @@
+Oct 22 00:00:00 Insidebb-fw %FWSM-6-302013: Built inbound TCP connection 145681421158661634 for outside:128.193.225.145/2474 (128.193.225.145/2474) to inside:128.193.132.12/5003 (128.193.132.12/5003)
+Oct 22 00:00:00 Insidebb-fw %FWSM-6-302013: Built inbound TCP connection 145673754710219198 for outside:128.193.85.110/60940 (128.193.85.110/60940) to inside:128.193.132.38/389 (128.193.132.38/389)
+Oct 22 00:00:00 Insidebb-fw %FWSM-6-302013: Built inbound TCP connection 145681425458665886 for outside:128.193.93.151/1933 (128.193.93.151/1933) to inside:128.193.132.15/5003 (128.193.132.15/5003)
+Oct 22 00:00:00 RTSsvcs-fw %ASA-6-305011: Built dynamic TCP translation from IRTSsvcs_Wdmz:10.196.23.193/3892 to ORTSsvcs_Wdmz:128.193.8.4/32186
+Oct 22 00:00:00 Insidebb-fw %FWSM-6-302013: Built inbound TCP connection 145681421158661635 for outside:128.193.8.4/32186 (128.193.8.4/32186) to inside:128.193.132.12/5003 (128.193.132.12/5003)

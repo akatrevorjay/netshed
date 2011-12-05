@@ -4,6 +4,8 @@
 #
 # @author: Kevin Ngo <kevin.ngo@oregonstate.edu>
 
+import sys
+sys.path.append('../')
 from pymongo import Connection, database, collection
 from utilities import *
 import datetime

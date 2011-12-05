@@ -1,16 +1,16 @@
 #!/bin/bash
-# Starts all the log dumpers and kills them all if this gets killed 
-# Takes a few seconds to die due to sleep 
+# Starts all the log dumpers and kills them all if this gets killed
+# Takes a few seconds to die due to sleep
 
 function setTrap {
     trap killDumpers TERM SIGINT SIGTERM
 }
 
 function killDumpers {
-    kill ${pat_pid} 
-    kill ${nat_pid} 
+    kill ${pat_pid}
+    kill ${nat_pid}
     kill ${csacs_pid}
-    kill ${resnet_pid} 
+    kill ${resnet_pid}
     exit
 }
 
@@ -29,6 +29,6 @@ python resnet_dump.py &
 resnet_pid=$!
 
 while true; do
-    sleep 10
+    sleep 5
 done
 

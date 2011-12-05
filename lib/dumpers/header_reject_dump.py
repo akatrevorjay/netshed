@@ -4,6 +4,8 @@
 #
 # @author: Kevin Ngo <kevin.ngo@oregonstate.edu>
 
+import sys
+sys.path.append('../')
 from pymongo import Connection, database, collection
 from utilities import *
 import datetime
@@ -33,6 +35,10 @@ def dump(test=False):
                 header_reject['to_addr'] = [email for email in emails if email != emails[0]]
 
             line = line.split(' ')
+            try:
+                line.remove('')
+            except:
+                pass
             # date in MMDD form
             header_reject['time'] = to_unix_timestamp(format_logdate(line[0] + ' ' + line[1]), line[2])
 

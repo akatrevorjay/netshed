@@ -15,16 +15,15 @@
 
 #banner{ 
     background: #000000; 
-    padding-right: 40px; 
 }
-div#tb_banner{ 
+div #tb_banner{ 
     height:42px; 
 }
 
-div#tb_bannerUtility{ 
+div #tb_bannerUtility{ 
     float:left; 
 } 
-div#tb_utility{ 
+div #tb_utility{ 
     padding-top:20px; 
     background-color:#000000; 
     text-align:right;

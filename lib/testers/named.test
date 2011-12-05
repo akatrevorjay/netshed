@@ -1,0 +1,5 @@
+Oct 20 00:00:00 ns5 named[29750]: zone osupachyderm.org/IN/other: Transfer started.
+Oct 20 00:00:00 ns5 named[29750]: transfer of 'osupachyderm.org/IN/other' from 128.193.15.7#53: connected using 128.193.15.13#55192
+Oct 20 00:00:00 ns5 named[29750]: transfer of 'osupachyderm.org/IN/other' from 128.193.15.7#53: resetting
+Oct 20 00:00:00 ns5 named[29750]: transfer of 'osupachyderm.org/IN/other' from 128.193.15.7#53: connected using 128.193.15.13#34823
+Oct 20 00:00:00 ns5 named[29750]: zone osupachyderm.org/IN/other: transferred serial 1319093713

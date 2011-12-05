@@ -1,0 +1,5 @@
+Oct 7 00:00:07 odie gld: Greylist activated for recipient=<bob.alice@oregonstate.edu> sender=<bounce-14455156-115696967@pr2.netatlantic.com> ip=<192.168.1.101>
+Oct 7 00:00:07 odie gld: Greylist activated for recipient=<bob.alice@onid.orst.edu> sender=<info@mail.com> ip=<192.158.1.102>
+Oct 7 00:00:07 odie gld: Greylist activated for recipient=<alice.bob@oregonstate.edu> sender=<bounce-14455156-115696967@pr2.netatlantic.com> ip=<192.168.1.100>
+Oct 7 00:00:10 odie gld: Greylist activated for recipient=<trent.malory@oregonstate.edu> sender=<bounce-14455156-115696967@pr2.netatlantic.com> ip=<192.168.1.104>
+Oct 7 00:00:10 odie gld: Greylist activated for recipient=<fred.bob@oregonstate.edu> sender=<WinterSilks@email-wintersilks.com> ip=<192.168.1.106>

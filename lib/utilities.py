@@ -3,10 +3,11 @@ import mongoengine
 import ConfigParser
 import datetime
 import time
+import sys
 import os
 import re
 
-def connect_db(db_name, local=False, master=False):
+def connect_db(db_name, local=False, master=False, user=None, password=None):
     """ Connect to db, returns db object """
 
     if local:
@@ -17,8 +18,10 @@ def connect_db(db_name, local=False, master=False):
     if master:
         host = get_config('database', 'master_host')
     port = int(get_config('database', 'port'))
-    user = get_config('database', 'user')
-    password = get_config('database', 'password')
+    if not user:
+        user = get_config('database', 'user')
+    if not password:
+        password = get_config('database', 'password')
 
     connection = Connection(host, port)
     db_connect = database.Database(connection, db_name)
@@ -53,7 +56,7 @@ def connect_collection(db_name, collection_name, local=False):
 
 def pymongo_query(query, logtype, local=False):
     """ generic Django view for netshed, takes in query dictionary
-        and type of log and returns the resulting lines of logs"""
+        and type of log and returns the resulting lines of logs """
 
     loglines = []
     collections = []
@@ -84,24 +87,6 @@ def pymongo_query(query, logtype, local=False):
             loglines += [log['line'] for log in results]
 
     return loglines
-
-def connect_mongo_session(local=False):
-    """ Connect to database via mongoengine for django session """
-
-    if local:
-        mongoengine.connect('tools', host='localhost', port=27017)
-    else:
-        host = get_config('database', 'master_host')
-        port = int(get_config('database', 'port'))
-        user = get_config('database', 'user')
-        password = get_config('database', 'password')
-        mongoengine.connect('tools', username=user, password=password, host=host, port=port)
-
-def date_to_timestamp_range(date):
-    """ YYYYMMDD to two unix timestamps of start and end of given date """
-    start_time = int(time.mktime(time.strptime(date, "%Y%m%d")))
-    end_time = start_time + 86400
-    return [start_time, end_time]
 
 def follow(logfile):
     """
@@ -141,17 +126,20 @@ def format_query_input(query):
     if 'limit' in query:
         del(query['limit'])
     # parse date and time inputs
+
     return format_time(query)
 
 def format_query_output(query):
     """ Forms query dict to a pretty string """
-    query = format_query_input(query)
     if len(query) is 0:
         return None
     if 'ip' in query:
         query['ip'] = long2ip(query['ip'])
     if 'time' in query:
-        query['time'] = seconds_to_timestamp(query['time']['$gte']) + ' to ' + seconds_to_timestamp(query['time']['$lt'])
+        if query['time']['$gte'] == '0':
+            query['time'] = seconds_to_timestamp(query['time']['$gte']) + ' to ' + seconds_to_timestamp(query['time']['$lt'])
+        else:
+            query['time'] = 'from beginning of time to ' + seconds_to_timestamp(query['time']['$lt'])
     string = '[ '
     for key,value in query.items():
         string += "%s: %s | " % (key,value)
@@ -222,27 +210,35 @@ def format_time(query):
             query['time'] = {'$gte': second_range[0], '$lt': second_range[1]}
             del(query['date'])
         else:
+            date = datetime.date.today()
+            date = '%04d%02d%02d' % (date.year, date.month, date.day)
+            end_time = date_to_timestamp_range(date)[1]
+            query['time'] = {'$gte': 0, '$lt': end_time}
             for field in fields:
                 try:
                     del(query[field])
                 except KeyError:
                     pass
+            del(query['date'])
 
     return query
 
 def get_config(type, field, test=False):
     """ Get values from the config file """
+
     config = ConfigParser.ConfigParser()
     if test:
-        config.read('mongo_dump.cfg')
-        value = config.get(type, field)
-    try:
-        config.read("/data/www/netshed/lib/mongo_dump.cfg") #spot
-        value =  config.get(type, field)
-    except:
-        config.read("/usr/local/lib/python2.6/dist-packages/netshed/lib/mongo_dump.cfg") #astro
-        value = config.get(type, field)
+        config.read("/etc/netshed_test.cfg")
+    else:
+        config.read("/etc/netshed.cfg")
+
+    value = config.get(type, field)
     return value
+
+def get_log_types():
+    """ return list of names of dbs to iterate over if needed """
+    return ['aruba', 'cca', 'csacs', 'dhcp', 'greylist', 'header_reject', 'named', 'nat', 'pat', 'resnet', 'vpn']
+
 
 def get_log_window(logtype, local=False):
     """
@@ -257,14 +253,14 @@ def get_log_window(logtype, local=False):
             dates.append(int(collection[-8:]))
         except ValueError:
             pass
-    return dates
+    return sorted(dates, reverse=True)
 
 def ip2long(ip):
     """ converts ip to integer format """
     if not ip:
         return None
     try:
-        (o1, o2, o3, o4) = ip.split('.')
+        (o1, o2, o3, o4) = str(ip).split('.')
         return ((int(o1) * 16777216) + (int(o2) * 65536) + \
                 (int(o3) * 256) + int(o4))
     except Exception:
@@ -301,4 +297,21 @@ def seconds_to_timestamp(seconds):
     seconds = float(seconds)
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(seconds))
 
+def date_to_timestamp_range(date):
+    """ YYYYMMDD to two unix timestamps of start and end of given date """
+    start_time = int(time.mktime(time.strptime(date, "%Y%m%d")))
+    end_time = start_time + 86400
+    return [start_time, end_time]
+
+def connect_mongo_session(local=False):
+    """ Connect to database via mongoengine for django session """
+
+    if local:
+        mongoengine.connect('tools', host='localhost', port=27017)
+    else:
+        host = get_config('database', 'master_host')
+        port = int(get_config('database', 'port'))
+        user = get_config('database', 'user')
+        password = get_config('database', 'password')
+        mongoengine.connect('tools', username=user, password=password, host=host, port=port)
 

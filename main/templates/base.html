@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhml" xml:lang="en" lang="en">
 
   <head>
-    <title>Network Engineering, Oregon State University</title>
+    <title>Netshed | Network Engineering</title>
     <link rel="stylesheet" type="text/css" href="/site_media/stylesheets/base.css" />
     <link rel="stylesheet" type="text/css" href="/site_media/stylesheets/banner.css" />
     <link rel="stylesheet" type="text/css" href="/site_media/stylesheets/screen.css" />
@@ -14,9 +14,9 @@
   <body style="background:#FFFFFF;">
 
     <div id="wrap">
-       
+
       <div id="banner">
-        <div class="container"> 
+        <div class="container">
             <div class="span-32 last">
                 {% include "banner.inc" %}
             </div>
@@ -24,7 +24,7 @@
       </div>
 
       <div id="header">
-        <div class="container"> 
+        <div class="container">
             <div class="span-32 last">
                 <h1>Network Engineering</h1>
             </div>
@@ -34,50 +34,42 @@
       <div id="main"> 
         <div class="container">
           <div class="span-32 last">
-  
-            <div class="span-5">
-                <div id="sidebar">
-                  {% include "sidebar.inc" %}
-                </div>
+            <div id="navigation">
+                <a href="/"><span>Home</span></a>
+                <a href="/dhcp"><span>DHCP</span></a>
+                <a href="/vpn"><span>VPN</span></a>
+                <a href="/cca"><span>Cisco Clean Access</span></a>
+                <a href="/greylist"><span>Greylist</span></a>
+                <a href="/header_reject"><span>Header Reject</span></a>
+                <a href="/aruba"><span>Aruba</span></a>
+                <a href="/named"><span>BIND Zone Transfer</span></a>
+                <a href="/virtualusers"><span>Virtual Users</span></a>
+                <a href="/transport"><span>SMTP Transport File</span></a>
+                <a href="/firewall"><span>Firewall</span></a>
+                <a href="/security"><span>Security Report</span></a>
+                <a href="/logout"><span>Logout</span></a>
             </div>
-  
-            <div class="span-27 last">
-                <div id="navigation">
-                    <a href="/"><span>Home</span></a>
-                    <a href="/dhcp"><span>DHCP</span></a>
-                    <a href="/vpn"><span>VPN</span></a>
-                    <a href="/cca"><span>Cisco Clean Access</span></a>
-                    <a href="/greylist"><span>Greylist</span></a>
-                    <a href="/header_reject"><span>Header Reject</span></a>
-                    <a href="/named"><span>BIND Zone Transfer</span></a>
-                    <a href="/virtualusers"><span>Virtual Users</span></a>
-                    <a href="/transport"><span>SMTP Transport File</span></a>
-                    <a href="/firewall"><span>Firewall</span></a>
-                    <a href="/security"><span>Security Report</span></a>
-                    <a href="/logout"><span>Logout</span></a>
-                </div>
-                <br/>
-                <hr/>
+            <br/>
+            <hr/>
 
-                <div id="content">
-                    {% block content %}
-                    {% endblock %}
+            <div id="content">
+                {% block content %}
+                {% endblock %}
 
-                    {% if loglines %}
-                        <div id="log">
-                            <table>
-                               <th>Results for {{query}}</th> 
-                               {% for logline in loglines %}
-                                   <tr><td>{{logline}}<br/></td></tr>
-                               {% endfor %}
-                            </table>
-                        </div>
-                    {% else %}
-                        {% if query and not db_results %}
-                            <b>No results found for {{query}}</b>
-                        {% endif %}
+                {% if loglines %}
+                    <div id="log">
+                        <table>
+                           <th>{{loglines|length}} results for {{query}} ({{time}} seconds)</th> 
+                           {% for logline in loglines %}
+                               <tr><td>{{logline}}<br/></td></tr>
+                           {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                    {% if query and not db_results %}
+                        <b>No results found for {{query}}</b>
                     {% endif %}
-                </div>
+                {% endif %}
 
 
             </div>

@@ -1,0 +1,5 @@
+Oct 24 00:00:00 sapp5public %ASA-3-722035 err Group <FullTunnel> User <alice> IP <195.65.19.154> Received large packet 1410 (threshold 1406).
+Oct 24 00:00:00 sapp5public %ASA-3-722035 err Group <FullTunnel> User <alice> IP <195.65.19.154> Received large packet 1410 (threshold 1406).
+Oct 24 00:00:00 sapp5public %ASA-3-722035 err Group <FullTunnel> User <alice> IP <195.65.19.154> Received large packet 1410 (threshold 1406).
+Oct 24 00:00:00 sapp5public %ASA-3-722035 err Group <FullTunnel> User <alice> IP <195.65.19.154> Received large packet 1410 (threshold 1406).
+Oct 24 00:00:00 sapp5public %ASA-3-722035 err Group <FullTunnel> User <alice> IP <195.65.19.154> Received large packet 1410 (threshold 1406).

@@ -3,6 +3,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     (r'^$', include('main.urls')),
+    (r'^aruba/', include('aruba.urls')),
     (r'^dhcp/', include('dhcp.urls')),
     (r'^vpn/', include('vpn.urls')),
     (r'^cca/', include('cca.urls')),

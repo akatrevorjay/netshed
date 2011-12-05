@@ -1,6 +1,6 @@
 #!/bin/bash
-# Starts all the log dumpers and kills them all if this gets killed 
-# Takes a few seconds to die due to sleep 
+# Starts all the log dumpers and kills them all if this gets killed
+# Takes a few seconds to die due to sleep
 
 function setTrap {
     trap killDumpers TERM SIGINT SIGTERM
@@ -13,6 +13,7 @@ function killDumpers {
     kill ${vpn_pid} 
     kill ${greylist_pid} 
     kill ${header_reject_pid}
+    kill ${aruba_pid}
     exit
 }
 
@@ -36,7 +37,10 @@ greylist_pid=$!
 python header_reject_dump.py &
 header_reject_pid=$!
 
+python aruba_dump.py &
+aruba_pid=$!
+
 while true; do
-    sleep 10
+    sleep 5
 done
 

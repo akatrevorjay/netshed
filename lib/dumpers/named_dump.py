@@ -4,6 +4,8 @@
 #
 # @author: Kevin Ngo <kevin.ngo@oregonstate.edu>
 
+import sys
+sys.path.append('../')
 from pymongo import Connection, database, collection
 from utilities import *
 import datetime
@@ -18,7 +20,7 @@ def dump(test=False):
     while True:
         line = pipe.readline()
         if not line:
-            if not line:
+            if test:
                 break
             continue
 
@@ -33,7 +35,10 @@ def dump(test=False):
                 named['zone'] = match.group(1).lower()
 
             line = line.split(' ')
-
+            try:
+                line.remove('')
+            except:
+                pass
             # date in MMDD form
             named['time'] = to_unix_timestamp(format_logdate(line[0] + ' ' + line[1]), line[2])
 

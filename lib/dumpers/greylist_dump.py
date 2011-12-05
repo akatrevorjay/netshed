@@ -4,10 +4,11 @@
 #
 # @author: Kevin Ngo <kevin.ngo@oregonstate.edu>
 
+import sys
+sys.path.append('../')
 from pymongo import Connection, database, collection
 from utilities import *
 import datetime
-
 
 def dump(test=False):
     (db, pipe) = get_pipe('greylist',test=test)
